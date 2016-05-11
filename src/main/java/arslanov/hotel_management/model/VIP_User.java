@@ -1,7 +1,6 @@
 
 package arslanov.hotel_management.model;
 
-
-public class User {
+public class VIP_User {
     
 }
