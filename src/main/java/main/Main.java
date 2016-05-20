@@ -6,11 +6,8 @@
 package main;
 
 import arslanov.hotel_management.model.User;
-import arslanov.hotel_management.model.VIP_User;
-
-
 public class Main {
     public static void main(String[] args) {
-        VIP_User vip_user = new VIP_User();
+        
     }
 }
