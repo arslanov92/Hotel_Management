@@ -14,7 +14,7 @@ public class CheckRoom {
     
     @ManyToOne(optional=false)
     @JoinColumn(name="ROOMID",unique=true)
-    private Room room;
+    private Room holderRoom;
 
     @ManyToOne(optional=false)
     @JoinColumn(name="USERID")
@@ -28,12 +28,12 @@ public class CheckRoom {
         this.checkedId = checkedId;
     }
 
-    public Room getRoom() {
-        return room;
+    public Room getHolderRoom() {
+        return holderRoom;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setHolderRoom(Room holderRoom) {
+        this.holderRoom = holderRoom;
     }
 
     public User getHolderUser() {
@@ -57,7 +57,7 @@ public class CheckRoom {
     }
 
     public CheckRoom(Room room, User holderUser, Date chekDate, Date chekOutDate) {
-        this.room = room;
+        this.holderRoom = room;
         this.holderUser = holderUser;
         this.chekDate = chekDate;
         this.chekOutDate = chekOutDate;

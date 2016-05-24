@@ -36,10 +36,10 @@ public class DAO_ChekRoomImpl implements DAO_CheckRoom{
       em.merge(cR);
       
     }
+    
         @Override
-    public List<Date> getChekDate(long roomId) {
-              
-       return em.createQuery("SELECT chekDate Date from CheckRoom checkRoom").getResultList();
+    public List<Date> getChekDate(long roomId) {              
+       return em.createQuery("SELECT chekDate Date from CheckRoom WHERE CHECKROOM.holderRoom =?").setParameter(1, roomId).getResultList();
     }
 
     @Override
@@ -52,7 +52,7 @@ public class DAO_ChekRoomImpl implements DAO_CheckRoom{
     @Override
     public List<Date> getChekOutDate(long roomId) {
 //        CheckRoom checkRoom= em.find(CheckRoom.class, roomId);
-        return em.createQuery("SELECT chekOutDate Date from CheckRoom checkRoom").getResultList();
+        return em.createQuery("SELECT chekOutDate Date from CheckRoom WHERE CHECKROOM.holderRoom =?").setParameter(1, roomId).getResultList();
     }
 
     @Transactional(propagation=Propagation.REQUIRED)
@@ -61,6 +61,11 @@ public class DAO_ChekRoomImpl implements DAO_CheckRoom{
         CheckRoom checkRoom = em.find(CheckRoom.class, roomId);
         checkRoom.chekOutDate=newDate;
         em.merge(checkRoom); 
+    }
+
+    @Override
+    public void setNewChekedRoom(CheckRoom checkRoom) {
+        em.merge(checkRoom);
     }
     
 }
