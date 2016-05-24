@@ -9,10 +9,10 @@ public interface DAO_Room {
     public List getRooms();
     public void storeNewRoom(Room room);
     public void deleteRoom(long id);
-    public Room getRoom(long id);   
-    public Date getChekDate(long id);
-    public Date setChekDate(long id);
-    public Date getChekOutDate(long id);
-    public Date setChekOutDate(long id);
+    public Room getRoom(long roomId);    
+    public List<Date> getChekDate(long roomId);
+    public void setChekDate(Date newDate,long roomId);
+    public List<Date> getChekOutDate(long roomId);
+    public void setChekOutDate(Date newDate,long roomId);
     
 }

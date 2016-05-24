@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arslanov.hotel_management.dao_implements;
 
 import arslanov.hotel_management.dao_interface.DAO_User;
@@ -17,10 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Марат
- */
+
 @Repository("UserDAO")
 public class DAO_UserImpl implements DAO_User{
 
@@ -30,8 +22,7 @@ public class DAO_UserImpl implements DAO_User{
     @Autowired    
     JpaTransactionManager txManager;
     
-    @Override
-    
+    @Override    
     public List<User> getUsers() {
         return em.createQuery("SELECT u from User u ").getResultList();
     }

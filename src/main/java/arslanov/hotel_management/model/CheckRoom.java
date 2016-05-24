@@ -18,4 +18,5 @@ public class CheckRoom {
     @ManyToOne(optional=false)
     @JoinColumn(name="USERID")
     private User holderUser;
+    
 }
