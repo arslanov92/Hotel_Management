@@ -17,8 +17,6 @@ public class Room {
     private final long number;
     public String type;
     public double price;
-    public Date chekDate;
-    public Date chekOutDate;
 
     public String getType() {
         return type;

@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 
 public class DAO_RoomImpl implements DAO_Room{
@@ -26,6 +28,7 @@ public class DAO_RoomImpl implements DAO_Room{
         return em.createQuery("SELECT r from Room r").getResultList();
     }
 
+    @Transactional(propagation=Propagation.REQUIRED)
     @Override
     public void storeNewRoom(Room room) {
         em.merge(room);
@@ -42,28 +45,4 @@ public class DAO_RoomImpl implements DAO_Room{
         return em.find(Room.class,roomId);
     }
 
-    @Override
-    public List<Date> getChekDate(long roomId) {
-       Room r = em.find(Room.class, roomId);
-       return em.createQuery("SELECT chekDate from Room r").getResultList();
-    }
-
-    @Override
-    public void setChekDate(Date newDate, long roomId) {
-        Room r = em.find(Room.class, roomId);
-        r.chekDate=newDate;
-        em.merge(r);
-    }
-
-    @Override
-    public List<Date> getChekOutDate(long roomId) {
-        Room r = em.find(Room.class, roomId);
-        return em.createQuery("SELECT chekOutDate from Room r").getResultList();
-    }
-
-    @Override
-    public void setChekOutDate(Date newDate, long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
