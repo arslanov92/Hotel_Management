@@ -1,5 +1,8 @@
 package arslanov.hotel_management.model;
-
+/**
+ *
+ * @author Марат
+ */
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;

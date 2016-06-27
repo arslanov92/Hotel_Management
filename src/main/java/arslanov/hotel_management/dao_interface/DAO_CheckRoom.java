@@ -1,6 +1,9 @@
 
 package arslanov.hotel_management.dao_interface;
-
+/**
+ *
+ * @author Марат
+ */
 import arslanov.hotel_management.model.CheckRoom;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;

@@ -1,6 +1,9 @@
 
 package arslanov.hotel_management.dao_implements;
-
+/**
+ *
+ * @author Марат
+ */
 import arslanov.hotel_management.dao_interface.DAO_Room;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;

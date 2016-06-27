@@ -1,5 +1,8 @@
 package arslanov.hotel_management.dao_interface;
-
+/**
+ *
+ * @author Марат
+ */
 import arslanov.hotel_management.model.User;
 import java.util.List;
 

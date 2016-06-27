@@ -1,5 +1,8 @@
 package arslanov.hotel_management.model;
-
+/**
+ *
+ * @author Марат
+ */
 import java.util.*;
 
 import javax.persistence.*;
@@ -11,13 +14,21 @@ public class Room {
     @Id
     @GeneratedValue        
     @Column(name="ROOM_ID")
-    private long roomId;
-    
+    private long roomId;    
        
     private final long number;
     public String type;
     public double price;
+    public int bed;
 
+    public int getBed() {
+        return bed;
+    }
+
+    public void setBed(int bed) {
+        this.bed = bed;
+    }
+    
     public String getType() {
         return type;
     }
@@ -38,7 +49,6 @@ public class Room {
         this.price = price;
     }
 
-    
     public Room(int number, String type, double price) {
         this.price=price;
         this.type=type;
