@@ -11,10 +11,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Марат
- */
+
 public class DAO_ChekRoomImpl implements DAO_CheckRoom{
   
     private EntityManager em;
@@ -25,8 +22,8 @@ public class DAO_ChekRoomImpl implements DAO_CheckRoom{
         
     @Override
     public List<Room> getCheckedRooms(Date chekDate, Date chekOutDate) {
-        return em.createQuery("SELECT c from CheckRoom c WHERE not in (CheckRoom.chekDate > ? and CheckRoom.chekOutDate > ?) "
-                + "OR (CheckRoom.chekDate < ? and CheckRoom.chekOutDate < ?) ").setParameter(1, chekDate)
+        return em.createQuery("SELECT c from CheckRoom c WHERE not (c.chekDate > ? and c.chekOutDate > ?) "
+                + "(OR c.chekDate < ? and c.chekOutDate < ? )").setParameter(1, chekDate)
                 .setParameter(3, chekDate).setParameter(2, chekOutDate).setParameter(4, chekOutDate).getResultList();
     }
 

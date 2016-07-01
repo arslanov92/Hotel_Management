@@ -30,6 +30,7 @@
 		<property name="cacheSeconds" value="0" />
     </bean>
     
-    <context:component-scan base-package="com.hotel_management.service"/>
+    <context:component-scan base-package="arslanov.hotel_management.controller"/>    
+    <context:component-scan base-package="arslanov.hotel_management.service"/>
     
 </beans>

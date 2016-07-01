@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>    
     <table>
-        <h1>Hello World!</h1>
+        <tr>
+        <td>      
+      <a href="lookUpRooms">Найти свободные комнаты </a>
+        </td>
+        
+      <tr>
     </table>
 </html>

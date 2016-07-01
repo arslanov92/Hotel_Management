@@ -16,10 +16,11 @@ public class Room {
     @Column(name="ROOM_ID")
     private long roomId;    
        
-    private final long number;
-    public String type;
-    public double price;
+    private long roomNumber;
+    public String typeRoom;
     public int bed;
+    public double price;
+    
 
     public int getBed() {
         return bed;
@@ -29,16 +30,16 @@ public class Room {
         this.bed = bed;
     }
     
-    public String getType() {
-        return type;
+    public String getTypeRoom() {
+        return typeRoom;
     }
 
-    public long getNumber() {
-        return number;
+    public long getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeRoom(String typeRoom) {
+        this.typeRoom = typeRoom;
     }
 
     public double getPrice() {
@@ -51,8 +52,8 @@ public class Room {
 
     public Room(int number, String type, double price) {
         this.price=price;
-        this.type=type;
-        this.number = number;
+        this.typeRoom=type;
+        this.roomNumber = number;
     }    
     
 }

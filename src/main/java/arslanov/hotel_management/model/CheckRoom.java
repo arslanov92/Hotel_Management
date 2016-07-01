@@ -3,7 +3,6 @@ package arslanov.hotel_management.model;
  *
  * @author Марат
  */
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 @Entity
@@ -22,6 +21,13 @@ public class CheckRoom {
     @ManyToOne(optional=false)
     @JoinColumn(name="USERID")
     private User holderUser;
+    
+    
+    @Temporal(TemporalType.DATE)
+    public Date chekDate;
+    @Temporal(TemporalType.DATE)
+    public Date chekOutDate;
+    
 
     public int getCheckedId() {
         return checkedId;
@@ -69,7 +75,4 @@ public class CheckRoom {
     public void setChekOutDate(Date chekOutDate) {
         this.chekOutDate = chekOutDate;
     }
-    
-    public Date chekDate;
-    public Date chekOutDate;
 }

@@ -8,13 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author Марат
- */
-
 @Entity
-@Table(name="ChekedRooms")
+@Table(name="HYSTORY")
 
 public class Hystory {
     @Id
