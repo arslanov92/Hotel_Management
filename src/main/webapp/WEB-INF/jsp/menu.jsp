@@ -5,7 +5,7 @@
     <table>
         <tr>
         <td>      
-      <a href="lookUpRooms">Найти свободные комнаты </a>
+      <a href="lookUpRooms">Посмотреть свободные комнаты </a>
         </td>
         
       <tr>

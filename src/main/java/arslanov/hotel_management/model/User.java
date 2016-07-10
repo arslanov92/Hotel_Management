@@ -17,8 +17,14 @@ public class User {
     private long userId;
     
     
-    private String firstName;
-    private String lastName;
+    public String firstName;
+    public String lastName;
+    private String login;
+    private String pwd;
+
+    public long getUserId() {
+        return userId;
+    }
     
 
     public String getFirstName() {
@@ -37,6 +43,26 @@ public class User {
         this.lastName = lastName;
     }
 
-   
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", login=" + login + ", pwd=" + pwd + '}';
+    }
+    
     
 }

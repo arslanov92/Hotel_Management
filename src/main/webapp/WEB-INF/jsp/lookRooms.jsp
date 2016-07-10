@@ -1,18 +1,10 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html>    
     <body>
-    <a href="index">На главную!</a>
-    <h1>Найти свободные комнаты</h1>
-    <p>Введите дату заселения  Введите дату выселения </p>
-    <form action="lookUpRooms">
-    <p><input type="date" name="calendar1"> <input type="date" name="calendar2"></p>
-    <p><input type="submit"></p>
-    </form>
-        <p>Cвободные комнаты: </p>        
-    <table>        
+        <h1>Список комнат</h1>
+        <table>        
         <thead>
         <tr>
         <th>  </th>
@@ -30,11 +22,11 @@
                 </td>                
                 <td>${X.typeRoom}</td>
                 <td>${X.bed}</td>
-                <td>${X.price}</td>                
+                <td>${X.price}</td>  
+                <td>${X.price}</td>
             </tr>            
         </c:forEach>       
         </tbody>             
     </table>
     </body>
-        
 </html>

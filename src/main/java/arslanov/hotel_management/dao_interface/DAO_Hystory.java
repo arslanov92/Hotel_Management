@@ -1,6 +1,7 @@
 package arslanov.hotel_management.dao_interface;
 
 import arslanov.hotel_management.model.Hystory;
+import org.springframework.stereotype.Repository;
 
 /**
  *

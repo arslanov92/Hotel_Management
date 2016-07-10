@@ -3,16 +3,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <body>
-    <a href="index">На главную!</a>
-    <h1>Найти свободные комнаты</h1>
-    <p>Введите дату заселения  Введите дату выселения </p>
-    <form action="lookUpRooms">
-    <p><input type="date" name="calendar1"> <input type="date" name="calendar2"></p>
-    <p><input type="submit"></p>
-    </form>
-        <p>Cвободные комнаты: </p>        
-    <table>        
+    
+    <body>        
+        
+    <table>   
+        Забронировать комнату с ${chekDate} по ${chekOutDate} 
         <thead>
         <tr>
         <th>  </th>
@@ -23,9 +18,13 @@
         </tr>
         </thead>    
         <tbody>
+        <form action="reservationFinal">
+        <input hidden="true" type="date" value="${chekDate}" name="chekDate"/>
+        <input hidden="true" type="date" value="${chekOutDate}" name="chekOutDate"/>
         <c:forEach var="X" items="${rooms}">
             <tr>
                 <td>               
+                <input type="radio" name="roomId" value="${X.roomId}"  /> 
                 <td>${X.roomNumber}</td>
                 </td>                
                 <td>${X.typeRoom}</td>
@@ -33,8 +32,10 @@
                 <td>${X.price}</td>                
             </tr>            
         </c:forEach>       
-        </tbody>             
-    </table>
-    </body>
+        </tbody>  
         
+    </table>
+        <p><input type="submit" value="забронировать"></p>
+    </body>
+    </form>
 </html>

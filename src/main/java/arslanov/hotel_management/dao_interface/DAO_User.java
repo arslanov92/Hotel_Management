@@ -5,6 +5,7 @@ package arslanov.hotel_management.dao_interface;
  */
 import arslanov.hotel_management.model.User;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 public interface DAO_User {    
     public List<User> getUsers();
@@ -12,5 +13,8 @@ public interface DAO_User {
     public User getUser(long userId);
     public User findUser(String first_name, String last_name);
     public void deleteUser(long id);
+    public User checkUserLogin(String login);
+    public User checkUserPassword(String pwd);
+    public User checkUserLoginAndPwd(String login, String pwd);
 
 }

@@ -9,5 +9,7 @@
     <body>
         <%@include file="login.jsp"%>
         <%@include file="menu.jsp"%>
+        <a href ="admin.jsp">
+        <a href="<c:url value='/actions/admin'/>" >Админ</a>
     </body>
 </html>

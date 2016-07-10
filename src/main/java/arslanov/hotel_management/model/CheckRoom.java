@@ -4,6 +4,7 @@ package arslanov.hotel_management.model;
  * @author Марат
  */
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.*;
 @Entity
 @Table(name="ChekedRooms")
@@ -65,6 +66,9 @@ public class CheckRoom {
         return chekOutDate;
     }
 
+    public CheckRoom() {
+    }
+
     public CheckRoom(Room room, User holderUser, Date chekDate, Date chekOutDate) {
         this.holderRoom = room;
         this.holderUser = holderUser;
@@ -75,4 +79,44 @@ public class CheckRoom {
     public void setChekOutDate(Date chekOutDate) {
         this.chekOutDate = chekOutDate;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CheckRoom other = (CheckRoom) obj;
+        if (!Objects.equals(this.holderRoom, other.holderRoom)) {
+            return false;
+        }
+        if (!Objects.equals(this.holderUser, other.holderUser)) {
+            return false;
+        }
+        if (!Objects.equals(this.chekDate, other.chekDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.chekOutDate, other.chekOutDate)) {
+            return false;
+        }
+        return true;
+        
+    }
+
+    @Override
+    public String toString() {
+        return "CheckRoom{" + "checkedId=" + checkedId + ", holderRoom=" + holderRoom + ", holderUser=" + holderUser + ", chekDate=" + chekDate + ", chekOutDate=" + chekOutDate + '}';
+    }
+    
 }

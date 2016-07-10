@@ -6,7 +6,7 @@ package arslanov.hotel_management.dao_interface;
  */
 import arslanov.hotel_management.model.Room;
 import java.util.*;
-
+import org.springframework.stereotype.Repository;
 
 public interface DAO_Room {
     public List getRooms();
