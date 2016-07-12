@@ -6,18 +6,23 @@ import arslanov.hotel_management.dao_interface.DAO_Room;
 import arslanov.hotel_management.dao_interface.DAO_User;
 import arslanov.hotel_management.model.CheckRoom;
 import arslanov.hotel_management.model.Room;
+import arslanov.hotel_management.model.User;
 import arslanov.hotel_management.service.FreeRooms;
 import arslanov.hotel_management.service.LoginService;
+import arslanov.hotel_management.service.LookRoomService;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -75,5 +80,31 @@ public class AdminController {
          
         return mv;
          
+    }
+    
+    @Autowired
+    public LookRoomService lrs;
+    @RequestMapping(value="addRoom")
+    public ModelAndView addRoom(@RequestParam("roomNumber") int roomNumber,@RequestParam("typeRoom") String typeRoom,
+            @RequestParam("bed") int bed,@RequestParam("price") BigDecimal price,
+            HttpSession session){
+        ModelAndView mv=new ModelAndView("admin");
+//        long id = lrs.lookRoom(roomNumber);
+        if (lrs.lookRoom(roomNumber)) {
+            mv.setViewName("admin");
+            mv.addObject("msg", "Ошибка добавления");
+            mv.addObject("details", "Комната с таким номером уже существует");
+            return mv;
+        }  
+        Room r = new Room(roomNumber, typeRoom, bed, price);   
+        roomDAO.storeNewRoom(r);
+        mv.addObject("msgSuccessful", "Комната успешно добавлена!");
+        mv.setViewName("admin");
+        return mv;        
+    }
+    
+    public ModelAndView delRoom(@RequestParam("roomId") long roomId){
+        ModelAndView mv=new ModelAndView("admin");
+        return mv;
     }
 }

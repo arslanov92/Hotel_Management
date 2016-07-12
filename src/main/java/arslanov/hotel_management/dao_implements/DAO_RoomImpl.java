@@ -10,6 +10,7 @@ import arslanov.hotel_management.model.User;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +49,18 @@ public class DAO_RoomImpl implements DAO_Room{
     @Override
     public Room getRoom(long roomId) {
         return em.find(Room.class,roomId);
+    }
+    
+    @Override
+    public Room lookUpRoom(int inputRoomNumber) {
+        try {            
+            Room r =em.createQuery("select R from Room R where R.roomNumber=? ",Room.class)
+                    .setParameter(1, inputRoomNumber)
+                .getSingleResult();    
+            return r;            
+        } catch (NoResultException e) {
+            return null;
+        } 
     }
 
 }

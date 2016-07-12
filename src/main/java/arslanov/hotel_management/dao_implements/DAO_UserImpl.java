@@ -89,7 +89,7 @@ public class DAO_UserImpl implements DAO_User{
             User u =em.createQuery("select U from User U where U.login=? and U.pwd=?",User.class).setParameter(1, login).setParameter(2, pwd)
                 .getSingleResult();    
             return u;            
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             return null;
         } 
     }

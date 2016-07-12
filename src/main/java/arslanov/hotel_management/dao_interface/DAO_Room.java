@@ -13,5 +13,5 @@ public interface DAO_Room {
     public void storeNewRoom(Room room);
     public void deleteRoom(long id);
     public Room getRoom(long roomId);  
-    
+    public Room lookUpRoom(int inputRoomNumber);
 }

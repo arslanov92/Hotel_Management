@@ -18,4 +18,5 @@ public class DAO_HystoryImpl {
     
     @Autowired    
     JpaTransactionManager txManager;
+    
 }

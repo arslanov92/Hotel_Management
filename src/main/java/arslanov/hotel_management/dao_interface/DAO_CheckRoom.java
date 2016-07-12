@@ -18,4 +18,5 @@ public interface DAO_CheckRoom {
     public void setCheсkDate(Date newDate,long roomId);
     public List<Date> getCheсkOutDate(long roomId);
     public void setCheсkOutDate(Date newDate,long roomId);
+    public void delCheсkedRoomWithRoomId(long roomId);
 }

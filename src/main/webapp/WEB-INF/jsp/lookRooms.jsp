@@ -8,6 +8,7 @@
         <thead>
         <tr>
         <th>  </th>
+        <th> id комнаты </th>
         <th> Номер комнаты </th>
         <th> Тип номера </th>
         <th> Количество спальных мест </th>
@@ -17,9 +18,11 @@
         <tbody>
         <c:forEach var="X" items="${rooms}">
             <tr>
-                <td>               
+                <td>
+                <td>${X.roomId}</td> 
+                </td>
                 <td>${X.roomNumber}</td>
-                </td>                
+                           
                 <td>${X.typeRoom}</td>
                 <td>${X.bed}</td>
                 <td>${X.price}</td>  
