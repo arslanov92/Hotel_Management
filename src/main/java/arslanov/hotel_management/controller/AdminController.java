@@ -9,6 +9,7 @@ import arslanov.hotel_management.model.CheckRoom;
 import arslanov.hotel_management.model.Hystory;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;
+import arslanov.hotel_management.service.DeleteService;
 import arslanov.hotel_management.service.FreeRooms;
 import arslanov.hotel_management.service.LoginService;
 import arslanov.hotel_management.service.LookRoomService;
@@ -41,6 +42,8 @@ public class AdminController {
     
     @Autowired
     FreeRooms fRooms; 
+    @Autowired
+    DeleteService deleteService;
     
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class); 
     @RequestMapping(value = "admin")
@@ -110,35 +113,36 @@ public class AdminController {
     @RequestMapping(value="delRoom")
     public ModelAndView delRoom(@RequestParam("roomId") long roomId){
         ModelAndView mv=new ModelAndView("admin");
-        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithRoomId(roomId);
-        for (CheckRoom checkRoom : checkRooms) {
-            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
-        }
-        List<Hystory> hystorys = dao_hystory.getHystoryWithRoomId(roomId); 
-        for (Hystory hystory : hystorys) {
-            dao_hystory.delHystory(hystory);
-        }        
-        roomDAO.deleteRoom(roomId);
-        mv.setViewName("admin"); 
+//        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithRoomId(roomId);
+//        for (CheckRoom checkRoom : checkRooms) {
+//            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
+//        }
+//        List<Hystory> hystorys = dao_hystory.getHystoryWithRoomId(roomId); 
+//        for (Hystory hystory : hystorys) {
+//            dao_hystory.delHystory(hystory);
+//        }        
+//        roomDAO.deleteRoom(roomId);
+        deleteService.deleteRoomService(roomId);
+//        mv.setViewName("admin"); 
         mv.addObject("msgDelRoomSuc", "Комната успешно удалена!");
-        
         return mv;
     }
+    
     @RequestMapping(value="delUser")
     public ModelAndView delUser(@RequestParam("userId") long userId){
         ModelAndView mv=new ModelAndView("admin");
         
-        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithUserId(userId);
-        for (CheckRoom checkRoom : checkRooms) {
-            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
-        }
-        List<Hystory> hystorys = dao_hystory.getHystoryWithUserId(userId); 
-        for (Hystory hystory : hystorys) {
-            dao_hystory.delHystory(hystory);
-        }
-        userDao.deleteUser(userId);
-        
-        mv.setViewName("admin"); 
+//        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithUserId(userId);
+//        for (CheckRoom checkRoom : checkRooms) {
+//            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
+//        }
+//        List<Hystory> hystorys = dao_hystory.getHystoryWithUserId(userId); 
+//        for (Hystory hystory : hystorys) {
+//            dao_hystory.delHystory(hystory);
+//        }
+//        userDao.deleteUser(userId);
+        deleteService.deleteUserService(userId);
+//        mv.setViewName("admin"); 
         mv.addObject("msgDelUserSuc", "Пользователь успешно удален!");        
         return mv;
     }
