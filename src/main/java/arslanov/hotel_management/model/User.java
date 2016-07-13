@@ -25,6 +25,9 @@ public class User {
     public long getUserId() {
         return userId;
     }
+
+    public User() {
+    }
     
 
     public String getFirstName() {

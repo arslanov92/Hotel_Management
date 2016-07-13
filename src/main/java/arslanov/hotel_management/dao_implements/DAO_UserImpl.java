@@ -4,6 +4,7 @@ package arslanov.hotel_management.dao_implements;
  * @author Марат
  */
 import arslanov.hotel_management.dao_interface.DAO_User;
+import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;
 import java.util.List;
 import javax.persistence.*;
@@ -50,8 +51,9 @@ public class DAO_UserImpl implements DAO_User{
     @Transactional(propagation=Propagation.REQUIRED)
     @Override
     public void deleteUser(long id) {
-        User u = em.find(User.class, id);
-        em.remove(u);        
+        User u =em.createQuery("select U from User U where U.userId = ?",User.class)
+                    .setParameter(1, id).getSingleResult();
+        em.remove(u);         
     }
 
     @Override

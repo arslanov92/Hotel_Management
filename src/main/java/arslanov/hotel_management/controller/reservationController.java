@@ -1,8 +1,10 @@
 package arslanov.hotel_management.controller;
 
 import arslanov.hotel_management.dao_interface.DAO_CheckRoom;
+import arslanov.hotel_management.dao_interface.DAO_Hystory;
 import arslanov.hotel_management.dao_interface.DAO_Room;
 import arslanov.hotel_management.dao_interface.DAO_User;
+import arslanov.hotel_management.model.Hystory;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;
 import arslanov.hotel_management.service.FreeRooms;
@@ -29,7 +31,9 @@ public class reservationController {
     public DAO_User userDao;
     @Autowired
     public DAO_Room roomDAO;
-
+    @Autowired
+    public DAO_Hystory hystoryDAO;
+    
     @Autowired
     FreeRooms fRooms;
 
@@ -59,14 +63,7 @@ public class reservationController {
 //            mv.addObject("chekOutDate", chekOutDate);           
         }
         return mv;
-    }
-
-    @RequestMapping(value = "reservationDo")
-    public ModelAndView Reservation() {
-        ModelAndView mv = new ModelAndView("reservationDo");
-
-        return mv;
-    }
+    }   
 
     @Autowired
     DAO_CheckRoom dao_CheckRoom;
@@ -94,10 +91,14 @@ public class reservationController {
             Room room = roomDAO.getRoom(roomId);
             if (rooms.contains(room)) {
                 dao_CheckRoom.recordNewCheсkedRoom(room, user, chekDate, chekOutDate);
+                Hystory hystory =new Hystory(room, user, chekDate, chekOutDate);
+                hystoryDAO.putNewHystory(hystory);
+                
             } else {
                 mv.setViewName("error");
                 mv.addObject("msg", "Ой!!");
-                mv.addObject("details", "Кто-то за секунду до вас успел забронировать эту комнату, пожалуйста выберите другую комнату!");
+                mv.addObject("details", "Кто-то за секунду до вас успел забронировать эту комнату,"
+                        + " пожалуйста выберите другую комнату!");
             }
             mv.addObject("chekDate", request.getParameter("calendarRe"));
             mv.addObject("chekOutDate", request.getParameter("calendarRe2"));

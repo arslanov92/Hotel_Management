@@ -34,6 +34,7 @@ public class FreeRooms {
         
         List<Room> rooms = new ArrayList<Room>();
         rooms=roomImplDAO.getRooms();
+        
         logger.info("all rooms:{}",rooms.toString());
         rooms.removeAll(chekedRooms);
         logger.info("chechked rooms:{}",chekedRooms.toString());

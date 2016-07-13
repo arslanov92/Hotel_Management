@@ -16,7 +16,7 @@ public class CheckRoom {
     int checkedId;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name="ROOMID",unique=true)
+    @JoinColumn(name="ROOMID")
     private Room holderRoom;
 
     @ManyToOne(optional=false)

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-
+            <a href="index">На главную!</a>
         <ul>
             <h1>Комнаты</h1>
             <li><a href="<c:url value='/actions/lookRooms'/>" >Посмотреть комнаты</a></li>
@@ -47,22 +47,36 @@
             <li>Удалить комнату</li>
             <form method="post" action="<c:url value='/actions/delRoom'/>">
             <tr>
-                <td>
-                        <h1>${msg}</h1>
-                        <h1>${details}</h1>
+                <td>                        
                         Введите id комнаты:
                         <input name="roomId" value="" />
-                        <br>
-                        <br>      
+                        <br>     
+                    </td>
+                    <td>
+                        <input type=submit value="Отправить"/>
                     </td>
             </tr>
+           ${msgDelRoomSuc}
             </form>      
         </ul>
         <ul>
+            
             <h1>Пользователи</h1>
-            <li>Посмотреть пользователей</li>
-            <li>Добавить пользователя</li>
+            <li><a href="<c:url value='/actions/lookUsers'/>" >Посмотреть пользователей</a></li>                                   
             <li>Удалить пользователя</li>
+            <form method="post" action="<c:url value='/actions/delUser'/>">
+            <tr>
+                <td>
+                        Введите id пользователя:
+                        <input name="userId" value="" />
+                        <br>     
+                    </td>
+                    <td>
+                        <input type=submit value="Отправить"/>
+                    </td>
+            </tr>
+            ${msgDelUserSuc}
+            </form>      
         </ul>
     </body>
 </html>

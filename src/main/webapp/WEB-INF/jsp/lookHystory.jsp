@@ -1,36 +1,38 @@
+<%-- 
+    Document   : lookHystory
+    Created on : 12.07.2016, 18:32:25
+    Author     : Марат
+--%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <body>
+<body>
         <a href="index">На главную!</a>
-        <h1>Найти свободные комнаты</h1>
-        <p>Введите дату заселения  Введите дату выселения </p>
-        <form action="lookUpRooms">
-            <p><input type="date" name="calendar1"> <input type="date" name="calendar2"></p>
-            <p><input type="submit"></p>
-        </form>
+        <h1>История вашего бронирования</h1>
+        <p>Введите дату заселения  Введите дату выселения </p>        
         <p>Cвободные комнаты: </p>        
         <table>        
             <thead>
                 <tr>
                     <th>  </th>
+                    <th> Дата заселения </th>
+                    <th> Дата выезда </th>
                     <th> Номер комнаты </th>
-                    <th> Тип номера </th>
+                    <th> Тип комнаты </th>
                     <th> Количество спальных мест </th>
-                    <th> Цена за день </th>
                 </tr>
             </thead>    
             <tbody>
-                <c:forEach var="X" items="${rooms}">
+                <c:forEach var="X" items="${hystory}">
                     <tr>
                         <td>               
-                        <td>${X.roomNumber}</td>
+                        <td>${X.chekDate}</td>
                         </td>                
-                        <td>${X.typeRoom}</td>
-                        <td>${X.bed}</td>
-                        <td>${X.price}</td>                
+                        <td>${X.chekOutDate}</td>
+                        <td>${X.holderRoom.roomNumber}</td>
+                        <td>${X.holderRoom.typeRoom}</td>
+                        <td>${X.holderRoom.bed}</td>
                     </tr>            
                 </c:forEach>       
             </tbody>             

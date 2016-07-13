@@ -12,8 +12,37 @@
     <form action="reservation">
     <p><input type="date" name="calendarRe"> <input type="date" name="calendarRe2"></p>
     <p><input type="submit"></p>
-    </form>             
-    
+    </form>            
+    <table>   
+        Забронировать комнату с ${chekDate} по ${chekOutDate} 
+        <thead>
+        <tr>
+        <th>  </th>
+        <th> Номер комнаты </th>
+        <th> Тип номера </th>
+        <th> Количество спальных мест </th>
+        <th> Цена за день </th>
+        </tr>
+        </thead>    
+        <tbody>
+        <form action="reservationFinal">
+        <input hidden="true" type="date" value="${chekDate}" name="chekDate"/>
+        <input hidden="true" type="date" value="${chekOutDate}" name="chekOutDate"/>
+        <c:forEach var="X" items="${rooms}">
+            <tr>
+                <td>               
+                <input type="radio" name="roomId" value="${X.roomId}"  /> 
+                <td>${X.roomNumber}</td>
+                </td>                
+                <td>${X.typeRoom}</td>
+                <td>${X.bed}</td>
+                <td>${X.price}</td>                
+            </tr>            
+        </c:forEach>       
+        </tbody>  
+        
+    </table>
+        <p><input type="submit" value="забронировать"></p>
     </body>
-    <%@include file="reservationDo.jsp"%>
+    </form>
 </html>

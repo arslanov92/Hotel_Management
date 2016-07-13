@@ -49,12 +49,14 @@ public class DAO_CheсkRoomImpl implements DAO_CheckRoom{
     @Override
     public void recordNewCheсkedRoom(Room room, User user,Date chekDate, Date chekOutDate) {
       CheckRoom cR=new CheckRoom(room, user, chekDate, chekOutDate);
+      logger.info("ROOM  !!!!!!!!!!!: {}",room.toString());
+      logger.info("USER  !!!!!!!!!!!: {}",user.toString());
       em.merge(cR);
     }
     
         @Override
     public List<Date> getCheсkDate(long roomId) {              
-       return em.createQuery("SELECT chekDate Date from CheckRoom WHERE CHECKROOM.holderRoom =?")
+       return em.createQuery("SELECT chekDate Date from CheckRoom WHERE CHECKROOM.holderRoom.roomId =?")
                .setParameter(1, roomId).getResultList();
     }
 
@@ -69,8 +71,21 @@ public class DAO_CheсkRoomImpl implements DAO_CheckRoom{
     @Override
     public List<Date> getCheсkOutDate(long roomId) {
 //        CheckRoom checkRoom= em.find(CheckRoom.class, roomId);
-        return em.createQuery("SELECT chekOutDate Date from CheckRoom WHERE CHECKROOM.holderRoom =?")
+        return em.createQuery("SELECT chekOutDate Date from CheckRoom WHERE CHECKROOM.holderRoom.roomId =?")
                 .setParameter(1, roomId).getResultList();
+    }
+    @Override
+    public List<CheckRoom> getCheсkRoomWithRoomId(long roomId) {
+//        CheckRoom checkRoom= em.find(CheckRoom.class, roomId);
+        return em.createQuery("SELECT c from CheckRoom c WHERE c.holderRoom.roomId =?",CheckRoom.class)
+                .setParameter(1, roomId).getResultList();
+    }
+    
+    @Override
+    public List<CheckRoom> getCheсkRoomWithUserId(long userId) {
+//        CheckRoom checkRoom= em.find(CheckRoom.class, roomId);
+        return em.createQuery("SELECT C from CheckRoom C WHERE C.holderUser.userId = ?",CheckRoom.class)
+                .setParameter(1, userId).getResultList();
     }
 
     @Transactional(propagation=Propagation.REQUIRED)
@@ -89,9 +104,22 @@ public class DAO_CheсkRoomImpl implements DAO_CheckRoom{
     
     @Transactional(propagation=Propagation.REQUIRED)
     @Override
-    public void delCheсkedRoomWithRoomId(long roomId) {
-        CheckRoom cR =em.createQuery("select R from  Room R where R.roomId=?",CheckRoom.class)
-                .setParameter(1, roomId).getSingleResult();
-        em.remove(cR);
+    public void delCheсkedRoomWithRoom(CheckRoom cR) {
+                em.remove(cR);
     }
+    
+//    @Transactional(propagation=Propagation.REQUIRED)
+//    @Override
+//    public void delCheсkedRoomWithUserId(long userId) {
+//        CheckRoom cR =em.createQuery("select cR from  CheсkedRoom cR where cR.holderUser.userId = ?",CheckRoom.class)
+//                .setParameter(1, userId).getSingleResult();
+//        em.remove(cR);
+//    }
+//    @Override
+//    public int getIdCheckRoomForHystory(User room,User user,Date chekDate, Date chekOutDate){
+//         int id = em.createQuery("select cR.checkedId from CheсkedRoom cR where cR.holderR and cR.holderUser = ?")
+//                
+//    }
+    
+    
 }

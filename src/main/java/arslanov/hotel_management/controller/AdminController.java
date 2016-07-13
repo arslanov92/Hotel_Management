@@ -2,9 +2,11 @@
 package arslanov.hotel_management.controller;
 
 import arslanov.hotel_management.dao_interface.DAO_CheckRoom;
+import arslanov.hotel_management.dao_interface.DAO_Hystory;
 import arslanov.hotel_management.dao_interface.DAO_Room;
 import arslanov.hotel_management.dao_interface.DAO_User;
 import arslanov.hotel_management.model.CheckRoom;
+import arslanov.hotel_management.model.Hystory;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;
 import arslanov.hotel_management.service.FreeRooms;
@@ -34,6 +36,9 @@ public class AdminController {
     public DAO_Room roomDAO;
     @Autowired
     DAO_CheckRoom dao_CheckRoom;
+    @Autowired
+    DAO_Hystory dao_hystory;
+    
     @Autowired
     FreeRooms fRooms; 
     
@@ -102,9 +107,46 @@ public class AdminController {
         mv.setViewName("admin");
         return mv;        
     }
-    
+    @RequestMapping(value="delRoom")
     public ModelAndView delRoom(@RequestParam("roomId") long roomId){
         ModelAndView mv=new ModelAndView("admin");
+        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithRoomId(roomId);
+        for (CheckRoom checkRoom : checkRooms) {
+            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
+        }
+        List<Hystory> hystorys = dao_hystory.getHystoryWithRoomId(roomId); 
+        for (Hystory hystory : hystorys) {
+            dao_hystory.delHystory(hystory);
+        }        
+        roomDAO.deleteRoom(roomId);
+        mv.setViewName("admin"); 
+        mv.addObject("msgDelRoomSuc", "Комната успешно удалена!");
+        
         return mv;
+    }
+    @RequestMapping(value="delUser")
+    public ModelAndView delUser(@RequestParam("userId") long userId){
+        ModelAndView mv=new ModelAndView("admin");
+        
+        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithUserId(userId);
+        for (CheckRoom checkRoom : checkRooms) {
+            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
+        }
+        List<Hystory> hystorys = dao_hystory.getHystoryWithUserId(userId); 
+        for (Hystory hystory : hystorys) {
+            dao_hystory.delHystory(hystory);
+        }
+        userDao.deleteUser(userId);
+        
+        mv.setViewName("admin"); 
+        mv.addObject("msgDelUserSuc", "Пользователь успешно удален!");        
+        return mv;
+    }
+    @RequestMapping(value="lookUsers")
+    public ModelAndView lookUsers(){
+         ModelAndView mv=new ModelAndView("lookUsers");
+         List<User> users= userDao.getUsers();
+         mv.addObject("users",users);
+         return mv;
     }
 }

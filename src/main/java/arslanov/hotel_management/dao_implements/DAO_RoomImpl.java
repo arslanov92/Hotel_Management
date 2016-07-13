@@ -25,9 +25,9 @@ public class DAO_RoomImpl implements DAO_Room{
     @PersistenceContext
     private EntityManager em;
     Logger logger = LoggerFactory.getLogger(DAO_UserImpl.class);
-    
-    @Autowired    
-    JpaTransactionManager txManager;
+//    
+//    @Autowired    
+//    JpaTransactionManager txManager;
         
     @Override
     public List getRooms() {
@@ -40,9 +40,12 @@ public class DAO_RoomImpl implements DAO_Room{
         em.merge(room);
     }
 
+    @Transactional(propagation=Propagation.REQUIRED)
     @Override
-    public void deleteRoom(long id) {
-        Room r=em.find(Room.class, id);
+    public void deleteRoom(long roomId) {
+//        Room r=em.find(Room.class, roomId);
+        Room r =em.createQuery("select R from Room R where R.roomId = ?",Room.class)
+                    .setParameter(1, roomId).getSingleResult();
         em.remove(r);   
     }
 

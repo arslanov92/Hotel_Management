@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>    
     <body>
+        <a href="admin">На admin!</a>
         <h1>Посмотреть зарезервированные комнаты</h1>
     <p>Введите дату заселения  Введите дату выселения </p>
     <form action="lookCheckedRooms">

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>    
     <body>
+        <a href="admin">На admin!</a>
         <h1>Список комнат</h1>
         <table>        
         <thead>
@@ -26,7 +27,6 @@
                 <td>${X.typeRoom}</td>
                 <td>${X.bed}</td>
                 <td>${X.price}</td>  
-                <td>${X.price}</td>
             </tr>            
         </c:forEach>       
         </tbody>             
