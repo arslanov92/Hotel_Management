@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 
 <html>
@@ -8,7 +9,8 @@
     </head>
     <body>
         <%@include file="login.jsp"%>
-        <%@include file="menu.jsp"%>        
+        <%@include file="menu.jsp"%>  
+        <!--a href="<c:url value='/private/login'/>" >login</a -->
         <a href="<c:url value='/private/admin'/>" >Админ</a>
     </body>
 </html>
