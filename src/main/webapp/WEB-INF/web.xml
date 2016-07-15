@@ -12,12 +12,11 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
-    
-   <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/actions/*</url-pattern>
-   </servlet-mapping>    
-        
+        <url-pattern>/private/*</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -26,4 +25,30 @@
     <welcome-file-list>
         <welcome-file>redirect.jsp</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>private_zone</display-name>
+        <web-resource-collection>
+            <web-resource-name>admin</web-resource-name>
+            <description/>
+            <url-pattern>/private/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>private</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/WEB-INF/jsp/login_1.jsp</form-login-page>
+            <form-error-page>/WEB-INF/jsp/error_1.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>private</role-name>
+    </security-role>
 </web-app>

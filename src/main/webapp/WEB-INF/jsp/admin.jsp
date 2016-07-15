@@ -7,10 +7,10 @@
             <a href="index">На главную!</a>
         <ul>
             <h1>Комнаты</h1>
-            <li><a href="<c:url value='/actions/lookRooms'/>" >Посмотреть комнаты</a></li>
-            <li><a href="<c:url value='/actions/lookCheckedRooms'/>">Посмотреть зарезервированные комнаты</a></li>
+            <li><a href="<c:url value='/private/lookRooms'/>" >Посмотреть комнаты</a></li>
+            <li><a href="<c:url value='/private/lookCheckedRooms'/>">Посмотреть зарезервированные комнаты</a></li>
             <li>Добавить комнату</li>
-            <form method="post" action="<c:url value='/actions/addRoom'/>">
+            <form method="post" action="<c:url value='/private/addRoom'/>">
                 <tr>
                     <td>
                         <h1>${msg}</h1>
@@ -45,7 +45,7 @@
                 <h1> ${msgSuccessful}</h1>
             </form>            
             <li>Удалить комнату</li>
-            <form method="post" action="<c:url value='/actions/delRoom'/>">
+            <form method="post" action="<c:url value='/private/delRoom'/>">
             <tr>
                 <td>                        
                         Введите id комнаты:
@@ -62,9 +62,9 @@
         <ul>
             
             <h1>Пользователи</h1>
-            <li><a href="<c:url value='/actions/lookUsers'/>" >Посмотреть пользователей</a></li>                                   
+            <li><a href="<c:url value='/private/lookUsers'/>" >Посмотреть пользователей</a></li>                                   
             <li>Удалить пользователя</li>
-            <form method="post" action="<c:url value='/actions/delUser'/>">
+            <form method="post" action="<c:url value='/private/delUser'/>">
             <tr>
                 <td>
                         Введите id пользователя:
