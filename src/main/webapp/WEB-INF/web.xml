@@ -40,11 +40,11 @@
         </auth-constraint>
     </security-constraint>
     <login-config>
-        <auth-method>BASIC</auth-method>
+        <auth-method>FORM</auth-method>
         <realm-name>JDBCRealm</realm-name>
         <form-login-config>
-            <form-login-page>/WEB-INF/jsp/login_1.jsp</form-login-page>
-            <form-error-page>/WEB-INF/jsp/error_1.jsp</form-error-page>
+            <form-login-page>/login_1.jsp</form-login-page>
+            <form-error-page>/error_1.jsp</form-error-page>
         </form-login-config>
     </login-config>
     <security-role>

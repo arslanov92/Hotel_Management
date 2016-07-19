@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <!DOCTYPE html>
 <html>
    <a href="index">На главную!</a>
@@ -38,7 +38,7 @@
             <br>            
         </td>
         <td>
-            <input type=submit value="Отправить"/>
+            <input type=submit value="Отправить" id="button"/>
         </td>
     </tr>
     </form>
