@@ -4,7 +4,7 @@
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <html>    
     <body>
-        <a href="admin">На admin!</a>
+        <h2> <a href="admin">На admin!</a> </h2>
         <h1>Список комнат</h1>
         <table>        
         <thead>
@@ -18,9 +18,11 @@
         </tr>
         </thead>    
         <tbody>
+        <form method="post" action="<c:url value='/private/delRoom'/>">
         <c:forEach var="X" items="${rooms}">
-            <tr>
+            <tr>                
                 <td>
+                <input type="radio" name="roomId" value="${X.roomId}"  /> 
                 <td>${X.roomId}</td> 
                 </td>
                 <td>${X.roomNumber}</td>
@@ -32,5 +34,7 @@
         </c:forEach>       
         </tbody>             
     </table>
+        <p><input type="submit" value="Удалить комнату"></p>       
     </body>
+    </form>
 </html>

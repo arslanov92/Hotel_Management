@@ -15,6 +15,13 @@ h1 {
     font-weight: 700;
     width: 450px;
 }
+h2 {
+    text-align: left;
+    font-size: 1.4em;   
+    font-weight: 700;
+    width: 450px;
+    color: #be7429;
+}
 
 #navbar {
     margin: 0;
@@ -40,7 +47,7 @@ h1 {
 #navbar a:hover {
     color: #fafafa;    
 }
-#index {;
+#index {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -84,4 +91,30 @@ h1 {
 	border: 2px inset #f0f0f0;
         color: #fafafa; 
 }
-
+#admin {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background: linear-gradient(#444, #111);    
+    width: 250px;
+    color: #DC143C;
+    font-size: 1.4em;  
+}
+#admin  li {
+    border-left: 15px solid black;
+    border-bottom: 1px solid #666;
+}
+#admin  a {    
+    background: linear-gradient(#444, #111);   
+    font: bold 20px/25px Arial, Helvetica;
+    color: #be7429;
+    padding: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;   
+}
+#admin a:hover {
+    background-color: #666;
+    border-left: 5px solid #3333FF;
+    color: #fafafa; 
+}

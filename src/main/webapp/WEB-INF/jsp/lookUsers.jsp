@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>    
     <body>
-        <a href="admin">На admin!</a>
+        <h2>  <a href="admin">На admin!</a> </h2>
         <h1>Список ползователей</h1>
         <table>        
         <thead>
@@ -17,9 +17,11 @@
         </tr>
         </thead>    
         <tbody>
+        <form action="delUser">
         <c:forEach var="X" items="${users}">
             <tr>
                 <td>
+                <input type="radio" name="userId" value="${X.userId}"  /> 
                 <td>${X.userId}</td> 
                 </td>
                 <td>${X.firstName}</td>
@@ -27,8 +29,11 @@
                 <td>${X.lastName}</td>
                 <td>${X.login}</td>
             </tr>            
-        </c:forEach>       
-        </tbody>             
-    </table>
+        </c:forEach>           
+        </tbody> 
+        
+    </table>  
+         <p><input type="submit" value="Удалить пользователя"></p>             
     </body>
+    </form>
 </html>

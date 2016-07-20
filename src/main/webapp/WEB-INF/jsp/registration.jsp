@@ -5,7 +5,7 @@
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <!DOCTYPE html>
 <html>
-   <a href="index">На главную!</a>
+    <h2> <a href="index">На главную!</a> </h2>
    <form method="post" action="<c:url value='/actions/registrationDo'/>">
     <tr>
         <td>

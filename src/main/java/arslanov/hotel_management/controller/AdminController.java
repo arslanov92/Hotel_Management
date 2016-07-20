@@ -122,9 +122,10 @@ public class AdminController {
 //            dao_hystory.delHystory(hystory);
 //        }        
 //        roomDAO.deleteRoom(roomId);
+        long roomNumber=roomDAO.getRoom(roomId).getRoomNumber();
         deleteService.deleteRoomService(roomId);
 //        mv.setViewName("admin"); 
-        mv.addObject("msgDelRoomSuc", "Комната успешно удалена!");
+        mv.addObject("msgDelRoomSuc", "Комната № "+ roomNumber+" c ID: " +roomId+ " успешно удалена!");
         return mv;
     }
     
@@ -141,9 +142,14 @@ public class AdminController {
 //            dao_hystory.delHystory(hystory);
 //        }
 //        userDao.deleteUser(userId);
+        String firstNameUser=userDao.getUser(userId).getFirstName();
+        String lastNameUser=userDao.getUser(userId).getLastName();
         deleteService.deleteUserService(userId);
 //        mv.setViewName("admin"); 
-        mv.addObject("msgDelUserSuc", "Пользователь успешно удален!");        
+        
+        mv.addObject("msgDelUserSuc", "успешно удален!");  
+        mv.addObject("msgDelUserFirstName", firstNameUser); 
+        mv.addObject("msgDelUserLastName", lastNameUser); 
         return mv;
     }
     @RequestMapping(value="lookUsers")

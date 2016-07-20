@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <a href="index">На главную!</a>
+        <h2> <a href="index">На главную!</a> <h2>
         <h1>Найти свободные комнаты</h1>
         <p>Введите дату заселения  Введите дату выселения </p>
         <form action="lookUpRooms">

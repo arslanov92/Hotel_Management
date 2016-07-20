@@ -14,7 +14,7 @@
 
         <div class="error">
             <h1>${msg}</h1>
-            ${details}
+            <h2>${details} </h2>
         </div>
         <br/>
         <a href="javascript:history.back()">Назад</a>

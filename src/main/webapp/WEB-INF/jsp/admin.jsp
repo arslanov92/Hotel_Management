@@ -5,79 +5,30 @@
 <!DOCTYPE html>
 <html>
     <body>
-            <a href="index">На главную!</a>
-        <ul>
-            <h1>Комнаты</h1>
+        <h2> <a href="index">На главную!</a> </h2>
+        <h1>${msgDelUserFirstName} ${msgDelUserLastName} ${msgDelUserSuc}</h1>
+        <h1>${msgDelRoomSuc}</h1>
+        <h1> ${msgSuccessful}</h1>
+        <h1>${msg}</h1>
+        <h1>${details}</h1>
+        <ul id="navbar">
             <li><a href="<c:url value='/private/lookRooms'/>" >Посмотреть комнаты</a></li>
             <li><a href="<c:url value='/private/lookCheckedRooms'/>">Посмотреть зарезервированные комнаты</a></li>
-            <li>Добавить комнату</li>
-            <form method="post" action="<c:url value='/private/addRoom'/>">
-                <tr>
-                    <td>
-                        <h1>${msg}</h1>
-                        <h1>${details}</h1>
-                        Введите номер комнаты:
-                        <input name="roomNumber" value="11" />
-                        <br>
-                        <br>      
-                    </td>
-                    <td> 
-                        Введите тип комнаты:
-                        <input name="typeRoom" name="Standart"/>
-                        <br>
-                        <br>            
-                    </td>
-                    <td> 
-                        Введите количество спальных мест:
-                        <input name="bed" value="2" />
-                        <br>
-                        <br>
-                    </td>
-                    <td> 
-                        Введите цену:
-                        <input name="price" value="250" />
-                        <br>
-                        <br>            
-                    </td>
-                    <td>
-                        <input type=submit value="Отправить" id="button"/>
-                    </td>
-                </tr>
-                <h1> ${msgSuccessful}</h1>
-            </form>            
-            <li>Удалить комнату</li>
-            <form method="post" action="<c:url value='/private/delRoom'/>">
-            <tr>
-                <td>                        
-                        Введите id комнаты:
-                        <input name="roomId" value="" />
-                        <br>     
-                    </td>
-                    <td>
-                        <input type=submit value="Отправить" id="button"/>
-                    </td>
-            </tr>
-           ${msgDelRoomSuc}
-            </form>      
+            <li><a href="<c:url value='/private/lookUsers'/>" >Посмотреть пользователей</a></li>                                                                        
+        </ul> 
+        <ul id="admin">                    
+            <form method="post" action="<c:url value='/private/addRoom'/>"> 
+                <li> Добавить комнату</li>
+                <li> Введите номер комнаты:</li>
+                <li> <input name="roomNumber" value="11" /> </li>                                                
+                <li> Введите тип комнаты:</li>
+                <li> <input name="typeRoom" name="Standart"/></li>                                 
+                <li> Введите количество спальных мест:</li>
+                <li> <input name="bed" value="2" /></li>
+                <li> Введите цену:</li>
+                <li> <input name="price" value="250" /></li>                     
         </ul>
-        <ul>
-            
-            <h1>Пользователи</h1>
-            <li><a href="<c:url value='/private/lookUsers'/>" >Посмотреть пользователей</a></li>                                   
-            <li>Удалить пользователя</li>
-            <form method="post" action="<c:url value='/private/delUser'/>">
-            <tr>
-                <td>
-                        Введите id пользователя:
-                        <input name="userId" value="" />
-                        <br>     
-                    </td>
-                    <td>
-                        <input type=submit value="Отправить" id="button"/>
-                    </td>
-            </tr>
-            ${msgDelUserSuc}
-            </form>      
-        </ul>
-    </body>
+        <input type=submit value="Отправить" id="button"/>
+    </form>  
+</body>
 </html>
