@@ -11,7 +11,8 @@
         <body><%@include file="login.jsp"%>
         <ul id="index">  
             <li><a href="<c:url value='lookUpRooms'/>">Посмотреть свободные комнаты </a></li> 
-            <li><a href="<c:url value='/private/admin'/>"> Админ</a></li>    
+            <li><a href="<c:url value='/private/admin'/>"> Админ</a></li>
+            <li><a href="<c:url value='webService'/> ">Web service псмотреть свободные комнаты</a></li>
         </ul>
     </body>
 </html>

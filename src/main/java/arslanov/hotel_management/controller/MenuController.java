@@ -14,5 +14,14 @@ public class MenuController {
          ModelAndView mv=new ModelAndView("index");
          return mv;
     }
-    
+    @RequestMapping(value="webService")
+    public ModelAndView webService() {
+         ModelAndView mv=new ModelAndView("webService");
+         return mv;
+    }
+//    @RequestMapping(value="webServiceFinal")
+//    public ModelAndView webServiceFinal() {
+//         ModelAndView mv=new ModelAndView("webServiceFinal");
+//         return mv;
+//    }
 }
