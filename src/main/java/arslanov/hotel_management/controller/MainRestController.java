@@ -30,12 +30,12 @@ public class MainRestController {
     
     private static final Logger logger = LoggerFactory.getLogger(MainRestController.class);
 
-    @RequestMapping(path = "/api/test", method = RequestMethod.GET,
-            produces = "application/json")
-    public Room test()
-            {
-                return new Room();
-            }
+//    @RequestMapping(path = "/api/test", method = RequestMethod.GET,
+//            produces = "application/json")
+//    public Room test()
+//            {
+//                return new Room();
+//            }
             
     @RequestMapping(path = "/api/freeRoom", method = RequestMethod.GET,
             produces = "application/json")
@@ -60,6 +60,12 @@ public class MainRestController {
                 chekOutDate = formatter.parse(strCheckOutDate);
             } catch (ParseException e) {
                 e.printStackTrace();
+            }
+            if (chekDate.after(chekOutDate)) {
+//                mv.setViewName("lookUpRooms");
+//                mv.addObject("msg", "Ой!!");
+//                mv.addObject("details", "Дата заселения указана раньше, чем дата выселения :) !");
+                return null;
             }
             //FreeRooms fRooms= new FreeRooms();
             rooms = fRooms.getFreeRooms(chekDate, chekOutDate);

@@ -44,6 +44,12 @@ public class lookUpController {
                 {  
                     e.printStackTrace();
                 }
+            if (chekDate.after(chekOutDate)) {
+//                mv.setViewName("lookUpRooms");
+                mv.addObject("msg", "Ой!!");
+                mv.addObject("details", "Дата заселения указана раньше, чем дата выселения :) !");
+                return mv;
+            }
             //FreeRooms fRooms= new FreeRooms();
             List<Room> rooms=fRooms.getFreeRooms(chekDate, chekOutDate);
              logger.info("rooms: {}",rooms.toString());

@@ -4,8 +4,10 @@
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <!DOCTYPE html>
 <html>
-    <body>
-        <h2> <a href="index">На главную!</a> <h2>
+    <body>        
+        <h2> <a href="index">На главную!</a> <h2>                
+         <h1>${msg}</h1>
+            <h2>${details} </h2>
         <h1>Найти свободные комнаты</h1>
         <p>Введите дату заселения  Введите дату выселения </p>
         <form action="lookUpRooms">

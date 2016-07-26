@@ -20,13 +20,13 @@
             <form method="post" action="<c:url value='/private/addRoom'/>"> 
                 <li> Добавить комнату</li>
                 <li> Введите номер комнаты:</li>
-                <li> <input name="roomNumber" value="11" /> </li>                                                
+                <li> <input name="roomNumber" value="11" required="" pattern="[0-9]{1,1000}"/> </li>                                                
                 <li> Введите тип комнаты:</li>
-                <li> <input name="typeRoom" name="Standart"/></li>                                 
+                <li> <input name="typeRoom" name="Standart" required="" pattern="[А-Яа-яA-Za-z]{1,1000}"/></li>                                 
                 <li> Введите количество спальных мест:</li>
-                <li> <input name="bed" value="2" /></li>
+                <li> <input name="bed" value="2" required="" pattern="[0-9]{1,1000}"/></li>
                 <li> Введите цену:</li>
-                <li> <input name="price" value="250" /></li>                     
+                <li> <input name="price" value="250" required="" pattern="[0-9]{1,1000}" /></li>                     
         </ul>
         <input type=submit value="Отправить" id="button"/>
     </form>  

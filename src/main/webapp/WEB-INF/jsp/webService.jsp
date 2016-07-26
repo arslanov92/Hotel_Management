@@ -10,7 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="<c:url value='/resources/newjavascript.js'/>"></script>
     </head>
-    <body>
+    <body>        
+         <h1>${msg}</h1>
+            <h2>${details} </h2>
         <h2> <a href="index">На главную!</a> <h2>
                 <h1>Найти свободные комнаты</h1>
                 <p>Введите дату заселения  Введите дату выселения </p>

@@ -5,7 +5,7 @@ body
     /* Высота блока */
     /*border: 2px solid #000; /* Параметры рамки */
     background-color: grey;
-    background: url(http://cs636325.vk.me/v636325849/1a967/lmDoNzha9ug.jpg) repeat; 
+    background: url(images/bg.jpg) repeat; 
     background-size: cover; 
 }
 h1 {

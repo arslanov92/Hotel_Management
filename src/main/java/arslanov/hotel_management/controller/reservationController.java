@@ -8,6 +8,7 @@ import arslanov.hotel_management.model.Hystory;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;
 import arslanov.hotel_management.service.FreeRooms;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,14 +48,23 @@ public class reservationController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         if (strCheckDate != null && strCheckOutDate != null) {
+            
             Date chekDate = new Date();
-            Date chekOutDate = new Date();
+            Date chekOutDate = new Date();            
             try {
                 chekDate = formatter.parse(strCheckDate);
                 chekOutDate = formatter.parse(strCheckOutDate);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            if (chekDate.after(chekOutDate)) {
+                mv.setViewName("reservation");
+                mv.addObject("msg", "Ой!!");
+                mv.addObject("details", "Дата заселения указана раньше, чем дата выселения :) !");
+                return mv;
+            }
+          //  chekDate           
+            
             List<Room> rooms = fRooms.getFreeRooms(chekDate, chekOutDate);
             mv.addObject("rooms", rooms);
             mv.addObject("chekDate", request.getParameter("calendarRe"));
@@ -100,11 +110,17 @@ public class reservationController {
                 mv.addObject("details", "Кто-то за секунду до вас успел забронировать эту комнату,"
                         + " пожалуйста выберите другую комнату!");
             }
+            long difference = chekOutDate.getTime() - chekDate.getTime();
+            long days = difference/(24*60*60*1000);
+            long price =room.getPrice().longValue();
+            long finalPrice=days*price;
             mv.addObject("chekDate", request.getParameter("calendarRe"));
             mv.addObject("chekOutDate", request.getParameter("calendarRe2"));
 //            mv.addObject("firstName",user.getFirstName());
 //            mv.addObject("lastName",user.getLastName());
+            mv.addObject("price", finalPrice);
             mv.addObject("user",user);
+            mv.addObject("days",days);
             mv.addObject("room",room);
         }
 
