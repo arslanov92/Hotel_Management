@@ -13,7 +13,7 @@ public class CheckRoom {
     @Id
     @GeneratedValue
     @Column(name="CHECKED_ID")
-    int checkedId;
+    long checkedId;
     
     @ManyToOne(optional=false)
     @JoinColumn(name="ROOMID")
@@ -30,7 +30,7 @@ public class CheckRoom {
     public Date chekOutDate;
     
 
-    public int getCheckedId() {
+    public long getCheckedId() {
         return checkedId;
     }
 

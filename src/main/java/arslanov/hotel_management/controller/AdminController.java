@@ -98,6 +98,7 @@ public class AdminController {
     
     @Autowired
     public LookRoomService lrs;
+    
     @RequestMapping(value="addRoom")
     public ModelAndView addRoom(@RequestParam("roomNumber") int roomNumber,@RequestParam("typeRoom") String typeRoom,
             @RequestParam("bed") int bed,@RequestParam("price") BigDecimal price,

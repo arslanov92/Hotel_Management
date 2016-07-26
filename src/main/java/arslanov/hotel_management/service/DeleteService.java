@@ -48,6 +48,13 @@ public class DeleteService {
         roomDAO.deleteRoom(roomId);
     }
     @Transactional(propagation=Propagation.REQUIRED)
+    public void deleteCheckedRoomService(long roomId){
+        List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithCheckedRoomId(roomId);
+        for (CheckRoom checkRoom : checkRooms) {
+            dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
+        }
+    }
+    @Transactional(propagation=Propagation.REQUIRED)
     public void deleteUserService(long userId){
         List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithUserId(userId);
         for (CheckRoom checkRoom : checkRooms) {

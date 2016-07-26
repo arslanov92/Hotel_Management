@@ -12,6 +12,7 @@
                     <h1 >Добро пожаловать, ${sessionScope.name} ${sessionScope.lastName}</h1>
                 <ul id="navbar">                    
                     <li ><a href="<c:url value='/actions/reservation'/>" > Забронировать</a></li> 
+                    <li><a href="<c:url value='/actions/cancelReservation'/>" >Отменить бронь</a></li> 
                     <li><a href="<c:url value='/actions/lookHystory'/>" > Посмотреть историю бронирования</a></li> 
                     <li><a href="<c:url value='/actions/logout'/>" > Выйти из системы</a> </li>
                 </ul>

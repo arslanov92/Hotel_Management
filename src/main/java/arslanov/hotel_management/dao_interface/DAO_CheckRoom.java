@@ -21,5 +21,7 @@ public interface DAO_CheckRoom {
     public List<Date> getCheсkOutDate(long roomId);
     public void setCheсkOutDate(Date newDate,long roomId);
     public void delCheсkedRoomWithRoom(CheckRoom cR);
+    public CheckRoom getCheckRoomForCancelRev(Date fromTo, Date fromOut, long userId,long roomId);
+     public List<CheckRoom> getCheсkRoomWithCheckedRoomId(long checkRoomId);
 //    public void delCheсkedRoomWithUserId(long userId);
 }

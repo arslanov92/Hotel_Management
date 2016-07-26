@@ -4,11 +4,12 @@ import arslanov.hotel_management.dao_interface.DAO_CheckRoom;
 import arslanov.hotel_management.dao_interface.DAO_Hystory;
 import arslanov.hotel_management.dao_interface.DAO_Room;
 import arslanov.hotel_management.dao_interface.DAO_User;
+import arslanov.hotel_management.model.CheckRoom;
 import arslanov.hotel_management.model.Hystory;
 import arslanov.hotel_management.model.Room;
 import arslanov.hotel_management.model.User;
+import arslanov.hotel_management.service.DeleteService;
 import arslanov.hotel_management.service.FreeRooms;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,7 +35,7 @@ public class reservationController {
     public DAO_Room roomDAO;
     @Autowired
     public DAO_Hystory hystoryDAO;
-    
+
     @Autowired
     FreeRooms fRooms;
 
@@ -48,9 +49,9 @@ public class reservationController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         if (strCheckDate != null && strCheckOutDate != null) {
-            
+
             Date chekDate = new Date();
-            Date chekOutDate = new Date();            
+            Date chekOutDate = new Date();
             try {
                 chekDate = formatter.parse(strCheckDate);
                 chekOutDate = formatter.parse(strCheckOutDate);
@@ -63,8 +64,8 @@ public class reservationController {
                 mv.addObject("details", "Дата заселения указана раньше, чем дата выселения :) !");
                 return mv;
             }
-          //  chekDate           
-            
+            //  chekDate           
+
             List<Room> rooms = fRooms.getFreeRooms(chekDate, chekOutDate);
             mv.addObject("rooms", rooms);
             mv.addObject("chekDate", request.getParameter("calendarRe"));
@@ -73,7 +74,7 @@ public class reservationController {
 //            mv.addObject("chekOutDate", chekOutDate);           
         }
         return mv;
-    }   
+    }
 
     @Autowired
     DAO_CheckRoom dao_CheckRoom;
@@ -101,9 +102,9 @@ public class reservationController {
             Room room = roomDAO.getRoom(roomId);
             if (rooms.contains(room)) {
                 dao_CheckRoom.recordNewCheсkedRoom(room, user, chekDate, chekOutDate);
-                Hystory hystory =new Hystory(room, user, chekDate, chekOutDate);
+                Hystory hystory = new Hystory(room, user, chekDate, chekOutDate);
                 hystoryDAO.putNewHystory(hystory);
-                
+
             } else {
                 mv.setViewName("error");
                 mv.addObject("msg", "Ой!!");
@@ -111,21 +112,67 @@ public class reservationController {
                         + " пожалуйста выберите другую комнату!");
             }
             long difference = chekOutDate.getTime() - chekDate.getTime();
-            long days = difference/(24*60*60*1000);
-            long price =room.getPrice().longValue();
-            long finalPrice=days*price;
+            long days = difference / (24 * 60 * 60 * 1000);
+            long price = room.getPrice().longValue();
+            long finalPrice = days * price;
             mv.addObject("chekDate", request.getParameter("calendarRe"));
             mv.addObject("chekOutDate", request.getParameter("calendarRe2"));
 //            mv.addObject("firstName",user.getFirstName());
 //            mv.addObject("lastName",user.getLastName());
             mv.addObject("price", finalPrice);
-            mv.addObject("user",user);
-            mv.addObject("days",days);
-            mv.addObject("room",room);
+            mv.addObject("user", user);
+            mv.addObject("days", days);
+            mv.addObject("room", room);
         }
+        return mv;
+    }
 
-        
+    @Autowired
+    DeleteService deleteService;
 
+    @Autowired
+    public DAO_Hystory hystoryDao;
+
+    @RequestMapping(value = "cancelReservation")
+    public ModelAndView cancelRev(HttpSession session) {
+        ModelAndView mv = new ModelAndView("cancelReservation");
+        long holderUserId = (long) session.getAttribute("userId");
+        logger.error("ID ЮЗЕЕЕЕЕЕЕЕЕЕЕЕРААААААААААААААА АГРХ!!!! {}", holderUserId);
+//        List<Hystory> hystory = hystoryDao.getUserHystory(holderUserId);
+        List<CheckRoom> checkRoom=dao_CheckRoom.getCheсkRoomWithUserId(holderUserId);
+        mv.addObject("checkRoom", checkRoom);
+//        deleteService.deleteRoomService(roomId);        
+//        mv.addObject("msgDelRoomSuc", "Комната № "+ roomNumber+" c ID: " +roomId+ " успешно удалена!");
+        return mv;
+    }
+
+    @RequestMapping(value = "cancelResDo")
+    public ModelAndView cancelRevDo(HttpSession session, @RequestParam("roomId") long roomId,
+            @RequestParam("chekDate") String strCheckDate, @RequestParam("chekOutDate") String strCheckOutDate) {
+        ModelAndView mv = new ModelAndView("cancelResDo");
+        long holderUserId = (long) session.getAttribute("userId");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        if (strCheckDate != null && strCheckOutDate != null) {
+            Date chekDate = new Date();
+            Date chekOutDate = new Date();
+            try {
+                chekDate = formatter.parse(strCheckDate);
+                chekOutDate = formatter.parse(strCheckOutDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            logger.error("logged in chekOutDate!!!! {}", chekOutDate);
+            logger.error("logged in chekDate!!!! {}", chekDate);
+            logger.error("logged in holderUserId!!!! {}", holderUserId);            
+            logger.error("logged in roomId!!!! {}", roomId);
+            long roomNumber = dao_CheckRoom.getCheckRoomForCancelRev(chekDate, chekOutDate, holderUserId, roomId).getCheckedId();
+            
+            deleteService.deleteCheckedRoomService(roomNumber);
+           // session.removeAttribute("hystory");
+            mv.addObject("msgCancelResDo", "Вы отменили бронировань комнаты № " + roomNumber + " c: "
+                    + " " + strCheckDate + " по " +strCheckOutDate);   
+            return mv;
+        }
         return mv;
     }
 

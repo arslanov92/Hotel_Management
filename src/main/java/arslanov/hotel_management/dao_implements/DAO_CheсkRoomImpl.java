@@ -80,12 +80,22 @@ public class DAO_CheсkRoomImpl implements DAO_CheckRoom{
         return em.createQuery("SELECT c from CheckRoom c WHERE c.holderRoom.roomId =?",CheckRoom.class)
                 .setParameter(1, roomId).getResultList();
     }
-    
+    public List<CheckRoom> getCheсkRoomWithCheckedRoomId(long checkRoomId) {
+//        CheckRoom checkRoom= em.find(CheckRoom.class, roomId);
+        return em.createQuery("SELECT c from CheckRoom c WHERE c.checkedId =?",CheckRoom.class)
+                .setParameter(1, checkRoomId).getResultList();
+    }
     @Override
     public List<CheckRoom> getCheсkRoomWithUserId(long userId) {
 //        CheckRoom checkRoom= em.find(CheckRoom.class, roomId);
         return em.createQuery("SELECT C from CheckRoom C WHERE C.holderUser.userId = ?",CheckRoom.class)
                 .setParameter(1, userId).getResultList();
+    }
+    public CheckRoom getCheckRoomForCancelRev(Date fromTo, Date fromOut, long userId,long roomId){
+        return em.createQuery("SELECT C from CheckRoom C WHERE (C.holderUser.userId = ? "
+                + "AND C.holderRoom.roomId=? AND C.chekDate=? and C.chekOutDate=?)"
+                + "",CheckRoom.class).setParameter(1, userId).setParameter(2, roomId).setParameter(3, fromTo)
+                .setParameter(4, fromOut).getSingleResult();                
     }
 
     @Transactional(propagation=Propagation.REQUIRED)
