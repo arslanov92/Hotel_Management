@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <html>    
+      <%@include file="admin.jsp"%>
     <body>
-        <h2> <a href="admin">На admin!</a> </h2>
         <h1>Список комнат</h1>
         <table>        
         <thead>

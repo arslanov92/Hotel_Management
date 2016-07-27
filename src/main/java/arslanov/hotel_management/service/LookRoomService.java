@@ -1,4 +1,3 @@
-
 package arslanov.hotel_management.service;
 
 import arslanov.hotel_management.dao_interface.DAO_Room;
@@ -8,21 +7,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LookRoomService {
+
     @Autowired
     public DAO_Room roomImplDAO;
-    
-    public boolean lookRoom(int inputRoomNumber){
+
+    public boolean lookRoom(int inputRoomNumber) {
         Room r = roomImplDAO.lookUpRoom(inputRoomNumber);
-        if (r != null){            
-         return true;
-        }else{return false;}
+        if (r != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
-//    public boolean lookRoom(int inputRoomNumber){
-//        if (roomImplDAO.lookUpRoom(inputRoomNumber)!= null) {
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
-//    
 }

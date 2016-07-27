@@ -9,6 +9,7 @@
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <!DOCTYPE html>
 <html>
+    <%@include file="login.jsp"%>
 <body>
     <h2> <a href="index">На главную!</a> </h2>
          <h1>История вашего бронирования</h1>

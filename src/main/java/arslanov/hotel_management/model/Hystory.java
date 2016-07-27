@@ -12,28 +12,29 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 @Entity
-@Table(name="HYSTORY")
+@Table(name = "HYSTORY")
 
 public class Hystory {
+
     @Id
     @GeneratedValue
-    @Column(name="HYSTORY_ID")
-    int hystoryID;
-  
-    @ManyToOne(optional=false)
-    @JoinColumn(name="ROOM_ID")
+    @Column(name = "HYSTORY_ID")
+    private int hystoryID;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ROOM_ID")
     private Room holderRoom;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="USERID")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "USERID")
     private User holderUser;
-    
+
     @Temporal(TemporalType.DATE)
     private Date chekDate;
-    
+
     @Temporal(TemporalType.DATE)
     private Date chekOutDate;
-    
+
     public Room getHolderRoom() {
         return holderRoom;
     }
@@ -41,7 +42,7 @@ public class Hystory {
     public void setHolderRoom(Room holderRoom) {
         this.holderRoom = holderRoom;
     }
-        
+
     public User getHolderUser() {
         return holderUser;
     }
@@ -84,5 +85,5 @@ public class Hystory {
     public String toString() {
         return "Hystory{" + "hystoryID=" + hystoryID + ", holderRoom=" + holderRoom + ", holderUser=" + holderUser + ", chekDate=" + chekDate + ", chekOutDate=" + chekOutDate + '}';
     }
-    
+
 }

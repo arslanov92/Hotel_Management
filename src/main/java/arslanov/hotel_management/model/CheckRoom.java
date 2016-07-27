@@ -1,4 +1,5 @@
 package arslanov.hotel_management.model;
+
 /**
  *
  * @author Марат
@@ -6,29 +7,29 @@ package arslanov.hotel_management.model;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.*;
+
 @Entity
-@Table(name="ChekedRooms")
+@Table(name = "ChekedRooms")
 
 public class CheckRoom {
+
     @Id
     @GeneratedValue
-    @Column(name="CHECKED_ID")
-    long checkedId;
-    
-    @ManyToOne(optional=false)
-    @JoinColumn(name="ROOMID")
+    @Column(name = "CHECKED_ID")
+    private long checkedId;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ROOMID")
     private Room holderRoom;
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name="USERID")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "USERID")
     private User holderUser;
-    
-    
+
     @Temporal(TemporalType.DATE)
-    public Date chekDate;
+    private Date chekDate;
     @Temporal(TemporalType.DATE)
-    public Date chekOutDate;
-    
+    private Date chekOutDate;
 
     public long getCheckedId() {
         return checkedId;
@@ -111,12 +112,12 @@ public class CheckRoom {
             return false;
         }
         return true;
-        
+
     }
 
     @Override
     public String toString() {
         return "CheckRoom{" + "checkedId=" + checkedId + ", holderRoom=" + holderRoom + ", holderUser=" + holderUser + ", chekDate=" + chekDate + ", chekOutDate=" + chekOutDate + '}';
     }
-    
+
 }

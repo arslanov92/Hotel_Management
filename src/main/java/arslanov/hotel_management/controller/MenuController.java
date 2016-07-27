@@ -6,18 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value="/")
+@RequestMapping(value = "/")
 public class MenuController {
-    
-    @RequestMapping(value="index")
+
+    @RequestMapping(value = "index")
     public ModelAndView Index() {
-         ModelAndView mv=new ModelAndView("index");
-         return mv;
+        ModelAndView mv = new ModelAndView("index");
+        return mv;
     }
-    @RequestMapping(value="webService")
+
+    @RequestMapping(value = "webService")
     public ModelAndView webService() {
-         ModelAndView mv=new ModelAndView("webService");
-         return mv;
+        ModelAndView mv = new ModelAndView("webService");
+        return mv;
     }
 //    @RequestMapping(value="webServiceFinal")
 //    public ModelAndView webServiceFinal() {

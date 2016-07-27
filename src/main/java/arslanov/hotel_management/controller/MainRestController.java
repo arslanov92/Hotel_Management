@@ -27,7 +27,7 @@ public class MainRestController {
     DAO_CheckRoom checkRoom;
     @Autowired
     DAO_Room dAO_Room;
-    
+
     private static final Logger logger = LoggerFactory.getLogger(MainRestController.class);
 
 //    @RequestMapping(path = "/api/test", method = RequestMethod.GET,
@@ -36,14 +36,14 @@ public class MainRestController {
 //            {
 //                return new Room();
 //            }
-            
     @RequestMapping(path = "/api/freeRoom", method = RequestMethod.GET,
             produces = "application/json")
-    public @ResponseBody List<Room> getRooms(@RequestParam String CheckDate,@RequestParam String CheckOutDate) {
+    public @ResponseBody
+    List<Room> getRooms(@RequestParam String CheckDate, @RequestParam String CheckOutDate) {
 //    public @ResponseBody List<Room> getRooms() {
         String strCheckDate = CheckDate;
         String strCheckOutDate = CheckOutDate;
-        List<Room> rooms = new ArrayList<Room>();
+        List<Room> rooms = new ArrayList<>();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         if (strCheckDate != null) {
             logger.info("strCheckDate NOT NULL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: {}", strCheckDate);
@@ -70,7 +70,7 @@ public class MainRestController {
             //FreeRooms fRooms= new FreeRooms();
             rooms = fRooms.getFreeRooms(chekDate, chekOutDate);
         }
-       // rooms=dAO_Room.getRooms();
+        // rooms=dAO_Room.getRooms();
         return rooms;
     }
 }

@@ -5,6 +5,7 @@
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <!DOCTYPE html>
 <html>
+    <%@include file="login.jsp"%>
     <h2> <a href="index">На главную!</a> </h2>
     <body>
          <h1>${msg}</h1>

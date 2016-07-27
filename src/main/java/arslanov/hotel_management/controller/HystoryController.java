@@ -1,4 +1,3 @@
-
 package arslanov.hotel_management.controller;
 
 import arslanov.hotel_management.dao_interface.DAO_Hystory;
@@ -13,24 +12,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 @RequestMapping("/")
 public class HystoryController {
-@Autowired    
-public DAO_User userDao;   
-@Autowired    
-public DAO_Hystory hystoryDao;
- private static final Logger logger = LoggerFactory.getLogger(HystoryController.class);
- 
-    @RequestMapping(value="lookHystory")
-    public ModelAndView lookHystory(HttpSession session)
-    {
-        ModelAndView mv=new ModelAndView("lookHystory");    
-        long holderUserId =(long)session.getAttribute("userId");
-        logger.error("ID ЮЗЕЕЕЕЕЕЕЕЕЕЕЕРААААААААААААААА АГРХ!!!! {}",holderUserId);
+
+    @Autowired
+    public DAO_User userDao;
+    @Autowired
+    public DAO_Hystory hystoryDao;
+    private static final Logger logger = LoggerFactory.getLogger(HystoryController.class);
+
+    @RequestMapping(value = "lookHystory")
+    public ModelAndView lookHystory(HttpSession session) {
+        ModelAndView mv = new ModelAndView("lookHystory");
+        long holderUserId = (long) session.getAttribute("userId");
+        logger.error("ID ЮЗЕЕЕЕЕЕЕЕЕЕЕЕРААААААААААААААА АГРХ!!!! {}", holderUserId);
         List<Hystory> hystory = hystoryDao.getUserHystory(holderUserId);
-        mv.addObject("hystory",hystory);
+        mv.addObject("hystory", hystory);
         return mv;
     }
 }

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h2> <a href="index">На главную!</a> </h2>
+        
         <h1>${msgDelUserFirstName} ${msgDelUserLastName} ${msgDelUserSuc}</h1>
         <h1>${msgDelRoomSuc}</h1>
         <h1> ${msgSuccessful}</h1>
@@ -13,22 +13,12 @@
         <h1>${details}</h1>
         <ul id="navbar">
             <li><a href="<c:url value='/private/lookRooms'/>" >Посмотреть комнаты</a></li>
+            <li><a href="<c:url value='/private/addRoomView'/>" >Добавить комнату</a></li>
             <li><a href="<c:url value='/private/lookCheckedRooms'/>">Посмотреть зарезервированные комнаты</a></li>
-            <li><a href="<c:url value='/private/lookUsers'/>" >Посмотреть пользователей</a></li>                                                                        
-        </ul> 
-        <ul id="admin">                    
-            <form method="post" action="<c:url value='/private/addRoom'/>"> 
-                <li> Добавить комнату</li>
-                <li> Введите номер комнаты:</li>
-                <li> <input name="roomNumber" value="11" required="" pattern="[0-9]{1,1000}"/> </li>                                                
-                <li> Введите тип комнаты:</li>
-                <li> <input name="typeRoom" name="Standart" required="" pattern="[А-Яа-яA-Za-z]{1,1000}"/></li>                                 
-                <li> Введите количество спальных мест:</li>
-                <li> <input name="bed" value="2" required="" pattern="[0-9]{1,1000}"/></li>
-                <li> Введите цену:</li>
-                <li> <input name="price" value="250" required="" pattern="[0-9]{1,1000}" /></li>                     
-        </ul>
-        <input type=submit value="Отправить" id="button"/>
+            <li><a href="<c:url value='/private/lookUsers'/>" >Посмотреть пользователей</a></li>  
+            
+        </ul>         
+            <h2> <a href="index">На главную!</a> </h2>
     </form>  
 </body>
 </html>

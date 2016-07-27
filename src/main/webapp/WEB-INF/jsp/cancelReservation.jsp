@@ -3,6 +3,7 @@
 <link href="<c:url value='/resources/style.css'/>" rel="stylesheet" type="text/css" media="screen" />
 <!DOCTYPE html>
 <html>
+    <%@include file="login.jsp"%>
 <body>
     <h2> <a href="index">На главную!</a> </h2>       
         <h1>Какую бронь вы хотети отменить?</h1>       
@@ -32,6 +33,7 @@
                         <td>${X.holderRoom.bed}</td>
                         <input hidden="true" type="date" value="${X.chekDate}" name="chekDate"/>
                         <input hidden="true" type="date" value="${X.chekOutDate}" name="chekOutDate"/>
+                        <input hidden="true" type="long" value="${X.checkedId}" name="checkedId"/>
                     </tr>            
                 </c:forEach>       
             </tbody>             

@@ -23,7 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class DeleteService {
-     @Autowired    
+
+    @Autowired
     public DAO_User userDao;
     @Autowired
     public DAO_Room roomDAO;
@@ -31,36 +32,38 @@ public class DeleteService {
     DAO_CheckRoom dao_CheckRoom;
     @Autowired
     DAO_Hystory dao_hystory;
-    
-    @Transactional(propagation=Propagation.REQUIRED)
-    public void deleteRoomService(long roomId){
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteRoomService(long roomId) {
         List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithRoomId(roomId);
         for (CheckRoom checkRoom : checkRooms) {
             dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
         }
-        List<Hystory> hystorys = dao_hystory.getHystoryWithRoomId(roomId); 
+        List<Hystory> hystorys = dao_hystory.getHystoryWithRoomId(roomId);
         for (Hystory hystory : hystorys) {
             dao_hystory.delHystory(hystory);
-        }        
+        }
 //        if (roomDAO.) {
 //            
 //        }
         roomDAO.deleteRoom(roomId);
     }
-    @Transactional(propagation=Propagation.REQUIRED)
-    public void deleteCheckedRoomService(long roomId){
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteCheckedRoomService(long roomId) {
         List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithCheckedRoomId(roomId);
         for (CheckRoom checkRoom : checkRooms) {
             dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
         }
     }
-    @Transactional(propagation=Propagation.REQUIRED)
-    public void deleteUserService(long userId){
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteUserService(long userId) {
         List<CheckRoom> checkRooms = dao_CheckRoom.getCheсkRoomWithUserId(userId);
         for (CheckRoom checkRoom : checkRooms) {
             dao_CheckRoom.delCheсkedRoomWithRoom(checkRoom);
         }
-        List<Hystory> hystorys = dao_hystory.getHystoryWithUserId(userId); 
+        List<Hystory> hystorys = dao_hystory.getHystoryWithUserId(userId);
         for (Hystory hystory : hystorys) {
             dao_hystory.delHystory(hystory);
         }

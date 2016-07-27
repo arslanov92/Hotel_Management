@@ -5,20 +5,19 @@ import java.util.*;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name="ROOMS")
+@Table(name = "ROOMS")
 public class Room {
+
     @Id
-    @GeneratedValue        
-    @Column(name="ROOM_ID")
-    private long roomId;    
-       
+    @GeneratedValue
+    @Column(name = "ROOM_ID")
+    private long roomId;
+
     private int roomNumber;
-    public String typeRoom;
-    public int bed;
-    public BigDecimal price;
-    
+    private String typeRoom;
+    private int bed;
+    private BigDecimal price;
 
     public int getBed() {
         return bed;
@@ -27,7 +26,7 @@ public class Room {
     public void setBed(int bed) {
         this.bed = bed;
     }
-    
+
     public String getTypeRoom() {
         return typeRoom;
     }
@@ -93,11 +92,11 @@ public class Room {
             return false;
         }
         return true;
-    }           
+    }
 
     @Override
     public String toString() {
         return "Room{" + "roomId=" + roomId + ", typeRoom=" + typeRoom + ", bed=" + bed + ", price=" + price + '}';
     }
-    
+
 }
